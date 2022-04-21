@@ -3,6 +3,6 @@
  */
 
 function helloWorld() {
-    return "Hello world!";
+    console.log("hello world");
 }
-document.body.innerHTML = helloWorld();
+helloWorld();

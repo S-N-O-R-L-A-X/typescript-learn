@@ -1,0 +1,5 @@
+/*
+Without this file, the helloWorld function in hello-world.ts will raise an error
+run `tsc --init` to solve this problem or create an empty file called tsconfig.json like this.
+
+*/

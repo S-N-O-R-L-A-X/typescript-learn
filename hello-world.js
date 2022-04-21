@@ -1,4 +1,7 @@
+/**
+ * use tsc to compile ts into js
+ */
 function helloWorld() {
-    return "Hello world!";
+    console.log("hello world");
 }
-document.body.innerHTML = helloWorld();
+helloWorld();
