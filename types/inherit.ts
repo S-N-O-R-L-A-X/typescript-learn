@@ -33,3 +33,10 @@ function eat(param:Bear){
 }
 
 eat({name:"bear",food:"honey"}); //bear eats honey
+
+
+function eat2(param:Fish){
+    console.log(param.name+" eats "+param.food);
+}
+
+eat2({name:"fish",food:"worms"}); //fish eats worms
