@@ -1,5 +1,15 @@
 /**
- * use typeof as type guards
+ * The function of narrowing is like type conversion
+ *
+ *
+ *
+ * The methods to check the type of param are various
+ * 1. use typeof as type guards
+ * 2. use param1 === param2
+ * 3. use attr in param
+ * 4. use param instanceof class
+ * 5. use param is type
+ *
  */
 function padLeft(padding, input) {
     if (typeof padding === 'number')

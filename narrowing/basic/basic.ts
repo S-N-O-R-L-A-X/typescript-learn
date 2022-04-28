@@ -8,7 +8,7 @@
  * 2. use param1 === param2 
  * 3. use attr in param 
  * 4. use param instanceof class
- * 5.
+ * 5. use param is type
  * 
  */
 function padLeft(padding: number | string, input: string) {
