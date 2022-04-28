@@ -2,4 +2,12 @@
 Without this file, the helloWorld function in hello-world.ts will raise an error
 run `tsc --init` to solve this problem or create an empty file called tsconfig.json like this.
 
+如果出现：”在类型“" "”上不存在。是否需要更改目标库? 请尝试将 “lib” 编译器选项更改为“es2015”或更高版本,则设置complierOptions，加入lib
+如果出现：找不到名称“console”。是否需要更改目标库? 请尝试更改 “lib” 编译器选项以包括 “dom”,则设置complierOptions，加入lib
 */
+{
+    "compilerOptions":{
+        "target": "es2021",
+        "lib": ["ES2021","DOM"]
+    }
+}
