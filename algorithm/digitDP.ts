@@ -1,4 +1,11 @@
-function rotatedDigits(n: number): number {
+/**
+ * digitDP constructs the number according to position one by one from scratch.
+ * 
+ * common uses: 
+ * the count of numbers from range a to b which meet the demand that is related to the composition of number.
+ */
+
+function digitDP(n: number): number {
     const s = n.toString();
 
     /**
