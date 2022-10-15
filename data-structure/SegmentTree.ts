@@ -4,7 +4,7 @@ class SegmentNode {
     right: SegmentNode;
     add: number;
     val: number
-    constructor(val = 0, left = null, right = null) {
+    constructor(val = 0, left: SegmentNode = null, right: SegmentNode = null) {
         this.left = left;
         this.right = right;
         this.val = val;
@@ -12,10 +12,11 @@ class SegmentNode {
     }
 };
 
+// for range of sum and add or minus to range
 class SegmentTree {
     root: SegmentNode;
     constructor() {
-        this.root = new SegmentNode(1, 1e9);
+        this.root = new SegmentNode();
     }
 
     query(l: number, r: number) {
