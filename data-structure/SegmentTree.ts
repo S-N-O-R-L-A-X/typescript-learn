@@ -1,3 +1,4 @@
+// node does not store l and r
 
 class SegmentNode {
     left: SegmentNode;
@@ -12,7 +13,11 @@ class SegmentNode {
     }
 };
 
-// for range of sum and add or minus to range
+// for range of sum and add or minus to range, it should * the number of children nodes when updating value
+// when covering range, it is unnecessary to accumulate lazy sign
+// when calculating max and min values, it is unnecessary to * the number of children nodes when updating value but accumulate lazy sign
+// when point update, the range is 1, so it is equivalent to * the number of children nodes or not.
+// the value of node can store special value, max, min value for example. 
 class SegmentTree {
     root: SegmentNode;
     constructor() {
