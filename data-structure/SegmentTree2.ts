@@ -4,14 +4,14 @@ class SegmentNode {
     r: number;
     left: SegmentNode | null;
     right: SegmentNode | null;
-    v: number;
+    val: number;
     add: number;
     constructor(l: number, r: number) {
         this.left = null;
         this.right = null;
         this.l = l;
         this.r = r;
-        this.v = 0;
+        this.val = 0;
         this.add = 0; // lazy sign
     }
 };
@@ -30,42 +30,42 @@ class SegmentTree {
         this.root = new SegmentNode(l, r);
     }
 
-    update_inside(l: number, r: number, v: number, node: SegmentNode) {
+    update_inside(l: number, r: number, val: number, node: SegmentNode) {
         if (l > r)
             return;
         if (node.l >= l && node.r <= r) { //node is completely covered
-            node.v += v;
-            node.add += v;
+            node.val += val;
+            node.add += val;
             return;
         }
         const mid = (node.l + node.r) >> 1;
         this.pushdown(node, mid - l + 1, r - mid);
 
         if (l <= mid)
-            this.update_inside(l, r, v, node.left);
+            this.update_inside(l, r, val, node.left);
         if (r > mid)
-            this.update_inside(l, r, v, node.right);
+            this.update_inside(l, r, val, node.right);
         this.pushup(node);
     }
 
-    update(l: number, r: number, v: number) {
-        this.update_inside(l, r, v, this.root);
+    update(l: number, r: number, val: number) {
+        this.update_inside(l, r, val, this.root);
     }
 
     query_inside(l: number, r: number, node: SegmentNode) {
         if (l > r)
             return 0;
         if (node.l >= l && node.r <= r) //the node is covered by the area
-            return node.v;
+            return node.val;
         const mid = (node.l + node.r) >> 1;
         this.pushdown(node, mid - l + 1, r - mid);
-        let v = 0;
+        let val = 0;
 
         if (l <= mid)
-            v = this.query_inside(l, r, node.left);
+            val = this.query_inside(l, r, node.left);
         if (r > mid)
-            v = Math.max(v, this.query_inside(l, r, node.right));
-        return v;
+            val = Math.max(val, this.query_inside(l, r, node.right));
+        return val;
     }
 
     query(l: number, r: number) {
@@ -73,7 +73,7 @@ class SegmentTree {
     }
 
     pushup(node: SegmentNode) {
-        node.v = Math.max(node.left.v, node.right.v);
+        node.val = Math.max(node.left.val, node.right.val);
     }
 
     pushdown(node: SegmentNode, leftNum: number, rightNum: number) {
@@ -83,10 +83,10 @@ class SegmentTree {
         if (!node.right)
             node.right = new SegmentNode(mid + 1, node.r);
         if (node.add !== 0) {
-            let left = node.left;
-            let right = node.right;
-            left.v += node.add;
-            right.v += node.add;
+            const left = node.left;
+            const right = node.right;
+            left.val += node.add;
+            right.val += node.add;
             left.add += node.add;
             right.add += node.add;
             node.add = 0;
