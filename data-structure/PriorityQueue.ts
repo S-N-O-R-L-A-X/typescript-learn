@@ -37,9 +37,10 @@ class PriorityQueue<T> {
         this.arr[this.size] = element;
         let son = this.size;
         while (son) {
-            if (this.comparator(this.arr[son], this.arr[(son - 1) / 2]) > 0)
-                this.swapByIdx(son, (son - 1) / 2);
-            son = (son - 1) / 2;
+            const child = (son - 1) >> 1;
+            if (this.comparator(this.arr[son], this.arr[child]) > 0)
+                this.swapByIdx(son, child);
+            son = child;
         }
     }
 
