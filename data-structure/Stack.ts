@@ -24,7 +24,7 @@ class Stack<T> {
         return this.stack[this.size - 1];
     }
 
-    get(index: number) {
+    get(index: number): T {
         return this.stack[index];
     }
 }

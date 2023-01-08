@@ -1,7 +1,7 @@
 class UnionfindSet {
     parent: number[];
     rank: number[];
-    cnt: number;//connected component
+    cnt: number; //connected component
 
     swap(num1: number, num2: number) {
         const x = num1;
@@ -10,8 +10,7 @@ class UnionfindSet {
     }
 
     constructor(n: number) {
-        this.parent = new Array(n).fill(0);
-        this.parent.forEach((item, index) => this.parent[index] = index);
+        this.parent = new Array(n).fill(0).map((_, index) => index);
         this.rank = new Array(n).fill(1);
         this.cnt = n;
     }
@@ -24,7 +23,7 @@ class UnionfindSet {
 
     connect(idx1: number, idx2: number): boolean {
         const r1 = this.find(idx1), r2 = this.find(idx2);
-        if (r1 == r2)//connected
+        if (r1 == r2) //connected
             return true;
         return false;
     }
