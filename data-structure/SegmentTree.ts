@@ -4,7 +4,7 @@ class SegmentNode {
     left: SegmentNode;
     right: SegmentNode;
     add: number;
-    val: number
+    val: number;
     constructor(val = 0, left: SegmentNode = null, right: SegmentNode = null) {
         this.left = left;
         this.right = right;
@@ -14,7 +14,7 @@ class SegmentNode {
 };
 
 // for range of sum and add or minus to range, it should * the number of children nodes when updating value
-// when covering range, it is unnecessary to accumulate lazy sign
+// when covering range, it is unnecessary to accumulate lazy sign; when adding or minusing, it is necessary
 // when calculating max and min values, it is unnecessary to * the number of children nodes when updating value but accumulate lazy sign
 // when point update, the range is 1, so it is equivalent to * the number of children nodes or not.
 // the value of node can store special value, max, min value for example. 
