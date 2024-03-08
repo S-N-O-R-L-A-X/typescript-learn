@@ -14,22 +14,21 @@ function bitCount(num: number): number {
 
 /**
  * extract lowest 1 bit
- * @param x 
- * @returns 1 << the lowest 1 in x 
+ * @param num 
+ * @returns 1 << the lowest 1 in num 
  */
-function lowest1(x) {
-	return x & (-x);
+function getLowest1(num: number): number {
+	return num & (-num);
 }
 
 /**
  * extract lowest 0 bit
- * @param x 
- * @returns 1 << the lowest 1 in x 
+ * @param num 
+ * @returns 1 << the lowest 0 in num 
  */
-function lowest0(x) {
-	return ~x & (x + 1);
+function getLowest0(num: number): number {
+	return ~num & (num + 1);
 }
-
 
 /**
  * 
@@ -49,11 +48,21 @@ function setLowest0(num: number): number {
 	return num | (num + 1);
 }
 
-
-function modPowerOfTwo(x, mod) {
-	return x & (mod - 1);
+/**
+ * 
+ * @param num 
+ * @param mod power of 2
+ * @returns num % mod
+ */
+function modPowerOfTwo(num: number, mod: number): number {
+	return num & (mod - 1);
 }
 
-function isPowerOfTwo(n) {
-	return n > 0 && (n & (n - 1)) == 0;
+/**
+ * 
+ * @param num 
+ * @returns number is the power of 2
+ */
+function isPowerOfTwo(num: number): boolean {
+	return num > 0 && (num & (num - 1)) === 0;
 }
