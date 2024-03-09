@@ -1,12 +1,12 @@
-class PriorityQueue<T> {
+export default class PriorityQueue<T> {
   arr: T[];
   comparator: Function;
   constructor(comparator?: Function) {
     this.arr = [];
-    this.comparator = comparator || ((a, b) => a - b);;
+    this.comparator = comparator || ((a: T, b: T) => (a as number) - (b as number));;
   }
 
-  pushDown(k): void {
+  pushDown(k: number): void {
     while (k * 2 + 1 < this.size) {
       const left_son = k * 2 + 1, right_son = k * 2 + 2;
       let son = left_son;

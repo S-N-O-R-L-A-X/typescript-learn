@@ -1,4 +1,4 @@
-class UnionfindSet {
+export default class UnionfindSet {
     parent: number[];
     rank: number[];
     cnt: number; //connected component
