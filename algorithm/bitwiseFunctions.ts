@@ -51,6 +51,15 @@ function setLowest0(num: number): number {
 /**
  * 
  * @param num 
+ * @returns the num after setting all the zeros right to the lowest 1 to 1 in num
+ */
+function setLowest1s(num: number): number {
+	return num | (num - 1);
+}
+
+/**
+ * 
+ * @param num 
  * @param mod power of 2
  * @returns num % mod
  */
