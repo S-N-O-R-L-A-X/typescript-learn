@@ -1,6 +1,14 @@
 import PriorityQueue from "../data-structure/PriorityQueue";
 const inf = 1e9 + 7;
-function dijkstra1(edges: number[][], n: number, starting: number) {//n is the number of node 
+
+/**
+ * 
+ * @param edges 
+ * @param n the number of node 
+ * @param starting 
+ * @returns distance staring from starting
+ */
+function dijkstra1(edges: number[][], n: number, starting: number): number[] {
     const routes = new Array<number>(n).fill(0).map(() => new Array<number>(n).fill(inf));
     edges.forEach((edge) => { //record present edge
         routes[edge[0]][edge[1]] = edge[2];
@@ -17,8 +25,7 @@ function dijkstra1(edges: number[][], n: number, starting: number) {//n is the n
         for (let j = 0; j < n; j++)
             dst[j] = Math.min(dst[j], dst[x] + routes[x][j]);
     }
-    const ret = Math.max(...dst);
-    return ret == inf ? -1 : ret;//perhaps there is a vertex that cannot be reached
+    return dst;
 }
 
 function dijkstra2(edges: [number, number, number][], n: number, starting: number): number[] {
@@ -30,17 +37,19 @@ function dijkstra2(edges: [number, number, number][], n: number, starting: numbe
 
     const dst: number[] = Array.from({ length: n }, () => Infinity);
     dst[starting] = 0;
-    const pq=new PriorityQueue<[number,number]>((a,b)=>a[0]-b[0]);
-    // pq stores {distance, target}
+    const pq = new PriorityQueue<[number, number]>((a, b) => a[0] - b[0]);
+    // pq stores [distance, target]
     pq.push([0, starting]);
 
-    while (pq.isEmpty()) {
+    while (!pq.isEmpty()) {
         const node: [number, number] = pq.pop();
         const dis: number = node[0], x: number = node[1];
-        if (dst[x] > dis) {
-            dst[x] = dis;
+        if (dst[x] >= dis) {
             for (const [neighbor, weight] of routes[x]) {
-                pq.push([dis + weight, neighbor]);
+                if (dst[x] + weight < dst[neighbor]) {
+                    dst[neighbor] = dst[x] + weight;
+                    pq.push([dis + weight, neighbor]);
+                }
             }
         }
     }
